@@ -1,0 +1,11 @@
+#NotFound{
+    justify-content: center;
+    background-color: var(--Color2);
+}
+
+.NotFound-main{
+    display:flex; 
+    justify-content: center; 
+    align-items:center;
+    text-Align:center;
+}
