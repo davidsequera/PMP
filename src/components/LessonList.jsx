@@ -4,17 +4,19 @@ import './styles/Footer.css'
 
 class Footer extends React.Component{
     render(){
-        const restaurant = this.props.restaurant.restaurants 
         return(
-                <ul className="RestaurantList_container">
-                    {restaurant.map((restaurant) => <li key={restaurant._id}>
-                                <Link to={`explore/${restaurant._id}`}className="RestaurantList_item">
-                                    <img className="RestaurantList_logo" src={restaurant.logo} alt={`logo ${restaurant.name}`}></img>
-                                    <h2 className="RestaurantList_Name">{restaurant.name}</h2>
-                                </Link>
-                            </li>
-                    )}
-                </ul>
+            <React.Fragment>
+                <div className="RestaurantList_container">
+                    {this.props.restaurant.map((restaurant) =>{
+                        return(
+                            <Link to='explore/places'className="RestaurantList_item" key={restaurant.id}>
+                                <img className="RestaurantList_logo" src={restaurant.imgUrl} alt="logo restaurant"></img>
+                                <h2 className="RestaurantList_Name">{restaurant.Name}</h2>
+                            </Link>
+                        )
+                    })}
+                </div>
+            </React.Fragment>
         )
     }
 }
