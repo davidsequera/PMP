@@ -7,7 +7,7 @@ function Layout (props){
     return(
         <React.Fragment>
             <Header/>
-            <div className="Layout-container">
+            <div className="Layout-container" id="Layout">
                 {props.children}
             </div>
             <Footer/>

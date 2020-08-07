@@ -1,6 +1,7 @@
 #NotFound{
     justify-content: center;
-    background-color: var(--Color2);
+    color: var(--color-A);
+    background-color: var(--color-A4);
 }
 
 .NotFound-main{

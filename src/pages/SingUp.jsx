@@ -1,12 +1,12 @@
 import React from 'react'
-import ProfileComponent from '../components/ProfileComponent'
+import LogInComponent from '../components/LogInComponent'
 
 class LogIn extends React.Component{
     render(){
         return(
-                <div className="Page-container" id="LogIn">
+                <div className="Page-container" id="SingUp">
                     <div className="login">
-                        <ProfileComponent/>
+                        <LogInComponent/>
                     </div>
                 </div>
             )

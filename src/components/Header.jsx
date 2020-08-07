@@ -1,20 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './styles/Navbar.css'
+import './styles/Header.css'
+import logo from '../assets/logo/logo.jpeg'
 
-class Navbar extends React.Component{
+class Header extends React.Component{
     render(){
         return(
-        <header className="header" id="starpage">
+        <header className="component-container header" id="Header">
 			<div className="header-container">
 				<div className="logo-nav-container">
 					<div className='logo-container'>
 						<figure className="logo-figure">
-							<img className="logito" src="https://cursopmp.visbal.co/logo.png" alt="imagen portada"/>
+							<img style={{width: '25px'}} className="logito" src={logo} alt="imagen portada"/>
 						</figure>
-						<h2>Curso PMP</h2>
+						<Link className="header-text">CURSO PMP</Link>
 					</div>
-					<Link className="logo-link" to="#starpage"></Link>
+					{/* <Link className="logo-link" to="#starpage"></Link> */}
 				</div>
 				<nav className="menu">
 					<ul>
@@ -31,9 +32,6 @@ class Navbar extends React.Component{
 							<Link className='menu-options' to="#Training">Capacitación</Link>
 						</li>
 						<li>
-							<Link className='menu-options' to="#Clients">Nuestros clientes</Link>
-						</li>
-						<li>
 							<Link className='menu-options' to="#AboutUs">Nosotros</Link>
 						</li>
 					</ul>
@@ -44,4 +42,4 @@ class Navbar extends React.Component{
     }
 }
 
-export default Navbar
+export default Header

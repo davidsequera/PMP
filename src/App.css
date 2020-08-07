@@ -1,20 +1,39 @@
 
 :root{
-  --Background-color: #F0F0F0;
-  --Main-color: #000000;
-  --Color1: #FF7E4F;
-  --Color2: #2E40B3;
-  --Color3: #3650FF;
-  --Color4: #F0F0F0;
-  --white-color:#FFFFFF;
+  /* Color Theme Basic */
+--color-A:  #FFFFFF;
+--color-B:  #FF7E4F;
+--color-C:  #3696FF;
+--color-D:  #2E40B3;
+/* Color Theme A */
+--color-A1:  #BFBFBF;
+--color-A2:  #808080;
+--color-A3:  #F0F0F0;
+--color-A4:  #404040;
+--color-A5:  #E6E6E6;
+/* Color Theme B */
+--color-B1:  #BF5E3B;
+--color-B2:  #803F28;
+--color-B3:  #401F14;
+--color-B4:  #E67147;
+/* Color Theme  C*/
+--color-C1:  #2871BF;
+--color-C2:  #1B4B80;
+--color-C3:  #0D2640;
+--color-C4:  #3088E6;
+/* Color Theme D */
+--color-D1:  #283CBF;
+--color-D2:  #1B2880;
+--color-D3:  #0D1440;
+--color-D4:  #3048E6;
+
+
+  --Navbar-size:50px;
   --Page-padding: 0 20px  var(--Navbar-size) 20px;
   }
 body{
-  background-color: var(--Background-color);
-  color: var(--Main-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--color-A);
+  color: var(--color-A4);
 }
 
 
@@ -22,17 +41,17 @@ body{
 
 .Layout-container{
   display: block;
-  height: auto;
-  width: 100vw;
+  height: 100%;
+  width: auto;
 }
 .App-title{
   font-size: 72px;
 }
 .Page-container{
-  padding: var(--Page-padding);
+  /* padding: var(--Page-padding); */
   margin: 0;
   width: auto;
-  min-height: calc(100vh - var(--Navbar-size));
+  /* min-height: calc(100vh - var(--Navbar-size)); */
   display: flex;
   flex-direction: column;
 }
@@ -44,10 +63,13 @@ body{
 
 
 /* General Details */
+.hidden{
+  display: none;
+}
 a{
   /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
   text-decoration: none;
-  color: var(--Main-color);
+  color: var(--color-A4);
 }
 ul{
   list-style: none;
@@ -57,33 +79,39 @@ ul{
 h2{
   font-size: 1.6rem;
 }
+input, button{
+  text-decoration: none;
+  outline: none;
+}
 .button{
-  background-color: var(--Main-color);
-  color: var(--white-color);
+  cursor: pointer;
+  background-color: var(--color-B4);
+  color: var(--color-A);
   font-size: 2.5rem;
   font-weight: bold;
-  border: 5px solid var(--white-color);
+  border: 5px solid var(--color-B);
+}
+.button:active{
+  background-color: var(--color-B);
 }
 /* General Details */
 
 /* scrollbar style */
 ::-webkit-scrollbar {
-  width: 6px;
-  display: none;
+  width: 8px;
+  /* display: none; */
   }
   
   ::-webkit-scrollbar-track {
-  border: 1px solid var(--p2-color);
-  border-radius: 10px;
+  border: 1px solid var(--color-A3);
   }
   
   ::-webkit-scrollbar-thumb {
-  background: var(--white-color);  
-  border-radius: 10px;
+  background: var(--color-B4);  
   }
   
   ::-webkit-scrollbar-thumb:hover {
-  background: var(--Light-color);  
+  background: var(--color-B);  
   }
 /* scrollbar style */
 

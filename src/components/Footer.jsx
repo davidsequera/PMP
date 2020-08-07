@@ -5,8 +5,8 @@ import './styles/Footer.css'
 class Footer extends React.Component{
     render(){
         return(
-        <header className="header" id="starpage">
-			<div className="header-container">
+        <header className="component-container footer" id="Footer">
+			<div className="footer-container">
 				<p>© 2020 - Curso PMP PMOK ver 6 -<Link to="Privacy">Privacy</Link></p>
 			</div>
 		</header>

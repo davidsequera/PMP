@@ -1,68 +1,281 @@
 import React from 'react'
 import LessonList from '../components/LessonList'
 import Video from '../components/Video'
+import './styles/Course.css'
 
 
 class Explore extends React.Component{
     constructor(props){
         super(props)
-        console.log(1)
         this.state = {
             data: [],
           };    
     }
     componentDidMount(){
-        console.log(3)
         this.timeoutId = setTimeout(() => {
             this.setState({
-                data: [              {
-                    id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
-                    Name: 'Crepes & Waffles',
-                    imgUrl:
-                    'https://instagram.fbog2-2.fna.fbcdn.net/v/t51.2885-19/s320x320/69621607_496699594487582_8129503935976177664_n.jpg?_nc_ht=instagram.fbog2-2.fna.fbcdn.net&_nc_ohc=OfEOkbPnbqwAX9iZfgW&oh=90e901d2dc912fb8beb52b2eb69229da&oe=5E8AF631'
+                data: [              
+                {
+                    id: "1",
+                    name: 'Capítulo 1: Introducción',
+                    number: 1,
+                    lessons:[
+                        {
+                            name:"Lección 1: Presentanción", 
+                            number:1, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Concepto proyecto", 
+                            number:2, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 3: Direccion de Proyectos Parte 1", 
+                            number:3, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Direccion de Proyectos Parte 2", 
+                            number:4, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 5: Resumen", 
+                            number:5, 
+                            link: "www.google.com" },
+                    ]
                 },
-                  {
-                    id: 'd00d3614-101a-44ca-b6c2-0be075aeed3d',
-                    Name: 'Wok',
-                    imgUrl:
-                    'https://instagram.fbog2-2.fna.fbcdn.net/v/t51.2885-19/s150x150/64649395_500178434055100_643862941094903808_n.jpg?_nc_ht=instagram.fbog2-2.fna.fbcdn.net&_nc_ohc=7TAPObxzM88AX_JcxCW&oh=ae804fe921269dc56ef3ac9dfbe7a160&oe=5E88C4AC'
+                {
+                    id: "2",
+                    name: 'Capítulo 2: Conceptos Fundamentales',
+                    number: 6,
+                    lessons:[
+                        {
+                            name:"Lección 1: Programas", 
+                            number:6, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 2: Portafolio", 
+                            number:7, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 3: OPM3 - PMO", 
+                            number:8, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Resumen", 
+                            number:9, 
+                            link: "www.google.com" }
+                    ]
                 },
-                  {
-                    id: '63c03386-33a2-4512-9ac1-354ad7bec5e9',
-                    Name: 'Andres Carne de res',
-                    imgUrl:
-                    'https://instagram.fbog2-2.fna.fbcdn.net/v/t51.2885-19/s320x320/60868025_443830029525661_7274070678247047168_n.jpg?_nc_ht=instagram.fbog2-2.fna.fbcdn.net&_nc_ohc=i7N5ynmsAF8AX9NpIxZ&oh=0a83172ad6fc9e9a50308fdbbc3bcd5e&oe=5E80D144'
-                },] 
+                {
+                    id: "3",
+                    name: 'Capítulo 3: Conceptos avanzados',
+                    number: 10,
+                    lessons:[
+                        {
+                            name:"Lección 1: Estructura Organizacional", 
+                            number:10, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Ciclo de vida del proyecto", 
+                            number:11, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 3: Competencias del director de proyecto -Parte 1", 
+                            number:12, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Competencias del director de proyecto -Parte 2", 
+                            number:13, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 5: Interesados del Proyecto", 
+                            number:14, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 6: Registro de interesados", 
+                            number:15, 
+                            link: "www.google.com" }
+                    ]
+                },                  {
+                    id: "4",
+                    name: 'Capítulo 4: Anteproytecto',
+                    number: 16,
+                    lessons:[ 
+                        {
+                            name:"Lección 1: Definición de anteproyecto", 
+                            number:16, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 2: Importancia del anteproyecto", 
+                            number:17, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 3: Plan de gestion de beneficios", 
+                            number:18, 
+                            link: "www.google.com" } 
+                    ]
+                },
+                {
+                    id: "5",
+                    name: 'Capítulo 5: Gestión del Alcance',
+                    number: 19,
+                    lessons:[
+                        {
+                            name:"Lección 1: Gestión del alcance -Parte 1 ", 
+                            number:19, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Gestión del alcance -Parte 2 ", 
+                            number:20, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 3: Estructura de desglose del Trabajo EDT", 
+                            number:21, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Gestión del alcance -Parte 3 ", 
+                            number:22, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 5: Planificar la gestión del alcance", 
+                            number:23, 
+                            link: "www.google.com" }
+
+                    ]
+                },                  {
+                    id: "6",
+                    name: 'Capítulo 6: Recopilación de requisitos',
+                    number: 24,
+                    lessons:[
+                        {
+                            name:"Lección 1: Recopilación de requisitos -Parte 1", 
+                            number:24, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Recopilación de requisitos -Parte 2", 
+                            number:25, 
+                            link: "www.google.com" },
+                    ]
+                },
+                {
+                    id: "7",
+                    name: 'Capítulo 7: Como crear la EDT',
+                    number: 26,
+                    lessons:[
+                        {
+                            name:"Lección 1: Importancia de la EDT", 
+                            number:26, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Como crear la EDT -Parte 1 ", 
+                            number:27, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 3: Como crear la EDT -Parte 2 ", 
+                            number:28, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Como crear la EDT -Parte 3 ", 
+                            number:29, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 5: Como crear la EDT -Parte 4", 
+                            number:30, 
+                            link: "www.google.com" }
+                    ]
+                },
+                {
+                    id: "8",
+                    name: 'Capítulo 8: Linea Base del Alcance',
+                    number: 40,
+                    lessons:[      
+                        {
+                            name:"Lección 1: Linea Base del alcance -Parte 1", 
+                            number:40, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Linea Base del alcance -Parte 2", 
+                            number:41, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 3: Validar el alcance -Parte 1", 
+                            number:42, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 4: Validar el alcance -Parte 2", 
+                            number:43, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 5: Validar el alcance -Parte 3", 
+                            number:44, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 6: Controlar el alcance", 
+                            number:45, 
+                            link: "www.google.com" }
+                    ]
+                },
+                {
+                    id: "9",
+                    name: 'Capítulo 9: Gestion de la comunicación',
+                    number: 46,
+                    lessons:[
+                        {
+                            name:"Lección 1: Importancia de las comunicaciones", 
+                            number:46, 
+                            link: "www.google.com" },
+                        {
+                            name:"Lección 2: Conceptos basicos de la comunicación", 
+                            number:47, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 3: Metodos de comunicación", 
+                            number:48, 
+                            link: "www.google.com" }
+                    ]
+                },
+                {
+                    id: "10",
+                    name: 'Capítulo 10: Actividades de los grupos de Procesos',
+                    number: 49,
+                    lessons:[
+                        {
+                            name:"Lección 1: Actividades del grupo de procesos de inicio -Parte 1", 
+                            number:49, 
+                            link: "www.google.com" }, 
+                        {
+                            name:"Lección 2: Actividades del grupo de procesos de inicio -Parte 2", 
+                            number:50, 
+                            link: "www.google.com" }
+                    ]
+                },
+                {
+                    id: "11",
+                    name: 'Capítulo 11: Video de Preguntas',
+                    number: 51,
+                    lessons:[
+                        {
+                            name:"Lección 1: Video - Practicar preguntas para el examen", 
+                            number:51, 
+                            link: "www.google.com" }
+                    ]
+                }
+            ] 
             })
         }, 0);
     }
-    componentDidUpdate(preprops, prestate){
-        console.log({
-            preprops: preprops, 
-            prestate: prestate})
-        console.log({
-            props: this.props,
-            state: this.state})
-        
-    }
     componentWillUnmount(){
-        console.log('se desmonto')
         clearTimeout(this.timeoutId)
     }
     render(){
         return(
-            <React.Fragment>
-                <div className="Page-container" id="Explorer">
-                    <h1 className="Page-title">Explore</h1>
-                    <div className="restaurants">
-                        <h2>Restaurants</h2>
+                <div className="Page-container" id="Course">
+                    <div className="courses">
+                        <Video/>
                         <LessonList
                         restaurant={this.state.data}
                         />
-                        <Video/>
                     </div>
                 </div>
-            </React.Fragment>
         )
     }
 }

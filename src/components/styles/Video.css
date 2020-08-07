@@ -1,0 +1,11 @@
+#Video{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-container{
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
