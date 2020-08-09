@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 12px solid cornflowerblue;
 }
 .LogInComponent_form{
     display: flex;
@@ -12,14 +11,12 @@
     padding: 15px;
     border: 2px solid var(--color-A4);
     border-radius: 1rem;
-    margin: 25px;
+    margin: 20px;
 }
 .LogInComponent_User-logo{
-    height: 150px;
-    width: 150px;
+    width: 45px;
     object-fit: cover;
     color: var(--color-B);
-    border-radius: 50%;
     margin: 10px;
     flex-shrink: 0;
 }
@@ -60,25 +57,18 @@
 }
 #LogInComponent_button{
     border-radius: 25px;
-    margin: 40px 0 20px 0;
-    width: 25vw;
+    margin: 35px 0 20px 0;
+    width: 60vw;
     height: 12vh;
-    font-size: 3rem;
 }
 
-/* #ProfileComponent_Username{
-
-}
-#ProfileComponent_PublicName{
-
-}
-#ProfileComponent_Email{
-
-} */
 
 @media screen and (min-width: 768px){
-    #ProfileComponent_button{
+    #LogInComponent_button{
         width: 335px;
         height: 81px;
+    }
+    .LogInComponent_User-logo{
+        width: 50px;
     }
 }

@@ -1,4 +1,9 @@
 .courses{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+}
+@media screen and (min-width: 1024px){
+    .courses{
+        flex-direction: row-reverse;
+    }
 }

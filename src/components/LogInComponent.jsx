@@ -1,13 +1,14 @@
 import React from 'react'
 import './styles/LogInComponent.css'
-import { MdAccountCircle } from 'react-icons/md';
+import logo from '../assets/logo/logo.jpeg'
+import { Link } from 'react-router-dom';
 
 class LogInComponent extends React.Component{
     render(){
         return(
                 <div className="LogInComponent_container" id="Form">
                     <form className="LogInComponent_form" action="">
-                    <MdAccountCircle className="LogInComponent_User-logo"/>
+                    <img alt='logo PMP'src={logo} className="LogInComponent_User-logo"/>
                     <div className="LogInComponent_item" id="LogInComponent_Email">
                         <label htmlFor="">Email</label>
                         <input
@@ -28,9 +29,10 @@ class LogInComponent extends React.Component{
                         // value={this.props.formValues.jobTitle}
                         />
                     </div>
-                    <button 
+                    <Link 
                     // onClick={this.props.consoleprinter} 
-                    className="button" id="LogInComponent_button">LOG IN</button>
+                    to='/course'
+                    className="button" id="LogInComponent_button">LOG IN</Link>
                     </form>
                 </div>
         )

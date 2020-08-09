@@ -23,23 +23,23 @@ class Explore extends React.Component{
                         {
                             name:"Lección 1: Presentanción", 
                             number:1, 
-                            link: "www.google.com" },
+                            link: "www.https://cursopmp.visbal.co/Cap%201%20Lecci%C3%B3n%201%20(Aura)Version2.mp4.com" },
                         {
                             name:"Lección 2: Concepto proyecto", 
                             number:2, 
-                            link: "www.google.com" },
+                            link: "https://cursopmp.visbal.co/Cap%201%20Lecc%202%20El%20Proyecto.mp4" },
                         {
                             name:"Lección 3: Direccion de Proyectos Parte 1", 
                             number:3, 
-                            link: "www.google.com" },
+                            link: "https://cursopmp.visbal.co/Cap%201%20Lec%203.mp4" },
                         {
                             name:"Lección 4: Direccion de Proyectos Parte 2", 
                             number:4, 
-                            link: "www.google.com" },
+                            link: "https://cursopmp.visbal.co/lecci%C3%B3n%204%20Direcci%C3%B3n%20de%20proyectos%202.mp4" },
                         {
                             name:"Lección 5: Resumen", 
                             number:5, 
-                            link: "www.google.com" },
+                            link: "https://cursopmp.visbal.co/Cap%201%20Leec%205.%20Resumen%201..mp4" },
                     ]
                 },
                 {

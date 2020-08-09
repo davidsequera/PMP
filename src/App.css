@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Monoton;
+  src: url(./assets/fonts/Monoton/Monoton-Regular.ttf);
+}
 
 :root{
   /* Color Theme Basic */
@@ -28,7 +32,9 @@
 --color-D4:  #3048E6;
 
 
-  --Navbar-size:50px;
+--Header-size:57px;
+--Footer-size:45px;
+--HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
   --Page-padding: 0 20px  var(--Navbar-size) 20px;
   }
 body{
@@ -51,6 +57,7 @@ body{
   /* padding: var(--Page-padding); */
   margin: 0;
   width: auto;
+  min-height: calc(100vh - var(--HeaderFooter));
   /* min-height: calc(100vh - var(--Navbar-size)); */
   display: flex;
   flex-direction: column;
@@ -116,5 +123,7 @@ input, button{
 /* scrollbar style */
 
 @media screen and (min-width: 1024px) {
-  
+  .button{
+    font-size: 2.5rem;
+  }
 }

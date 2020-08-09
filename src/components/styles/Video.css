@@ -5,7 +5,20 @@
     align-items: center;
 }
 .video-container{
-    display: flexbox;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+.course-video{
+    display: flex
+}
+.theVideo{
+    width: 100vw;
+
+}
+
+@media screen and (min-width: 1024px){
+    .theVideo{
+        width: 700px;
+    } 
 }

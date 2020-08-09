@@ -43,7 +43,7 @@ class LessonList extends React.Component{
                                 {chapter.lessons ? chapter.lessons.map((lesson) =>{
                                     return(
                                         <div className="lesson">
-                                            <Link to='explore/key'className='lesson-link' key={lesson.number}>
+                                            <Link to={lesson.link}className='lesson-link' key={lesson.number}>
                                                 <h4 className="lesson-text">{lesson.name}</h4>
                                             </Link>
                                             <div className="progress-bar">
