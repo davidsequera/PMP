@@ -3,13 +3,48 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
+
+import { gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3030',
+  cache: new InMemoryCache()
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+
+
+// const client = ...
+
+client
+  .query({
+    query: gql`
+      query Chapters{
+        chapters(course_id: "5f5426d165730f810b643129") {
+          name
+            lessons{
+            _id
+            name
+            link
+          }
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
+
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

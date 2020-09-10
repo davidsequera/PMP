@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './styles/LessonList.css'
 
 class LessonList extends React.Component{
@@ -13,7 +12,7 @@ class LessonList extends React.Component{
     render(){
         return(
                 <ul className="component-container" id="LessonList">
-                    {this.props.restaurant.map((chapter) =>{
+                    {this.props.chapters.map((chapter) =>{
                         return(
                             <li className="chapter" id={chapter.name} key={chapter.id}>
                                 <div className="chapter-container">
@@ -43,11 +42,17 @@ class LessonList extends React.Component{
                                 {chapter.lessons ? chapter.lessons.map((lesson) =>{
                                     return(
                                         <div className="lesson">
-                                            <Link to={lesson.link}className='lesson-link' key={lesson.number}>
+                                            <button 
+                                            onClick={ () =>{
+                                                this.props.videoChanger(lesson.link)
+                                            }}
+                                            className='lesson-link' 
+                                            key={lesson._id}>
+                                            
                                                 <h4 className="lesson-text">{lesson.name}</h4>
-                                            </Link>
+                                            </button>
                                             <div className="progress-bar">
-                                                <div className={this.state.user < lesson.number ? "progress-ball" : "progress-ball active-ball"}>
+                                                <div className={this.state.user < lesson._id ? "progress-ball" : "progress-ball active-ball"}>
                                                     <div className="progress-mini-ball"></div>
                                                 </div>
                                             </div>
