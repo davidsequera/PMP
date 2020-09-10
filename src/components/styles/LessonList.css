@@ -30,6 +30,11 @@
 .chapter-button:hover .chapter-text{
     color: var(--color-B);
 }
+.lesson-link{
+    border: none;
+    background-color: transparent;
+    color: var(--color-A4);
+}
 .lesson-link, .chapter-text{
     width: 80%;
 }
@@ -85,7 +90,8 @@
     height: 0.5rem;
 }
 .lesson-text{
-    margin: 5px;
+    font-size: 1rem;
+    margin: 6px;
     font-weight: initial;
     text-align: left;
 }
