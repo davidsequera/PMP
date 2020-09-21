@@ -5,6 +5,7 @@ import './styles/Course.css'
 import V11 from '../assets/video/11.mp4'
 import {useQuery, gql } from '@apollo/client'
 import { useState } from 'react'
+import Loading from '../microcomponents/Loading'
 
 
 const api = gql`
@@ -29,7 +30,7 @@ const Course = () =>{
     }
     if(loading){
         return(
-          <h1>Hola</h1>
+          <Loading/>
         )
       }
     if(error){

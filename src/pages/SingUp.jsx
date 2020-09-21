@@ -1,16 +1,16 @@
 import React from 'react'
-import LogInComponent from '../components/LogInComponent'
+import SingUpComponent from '../components/SignUpComponent'
 
-class LogIn extends React.Component{
+class SingUp extends React.Component{
     render(){
         return(
                 <div className="Page-container" id="SingUp">
-                    <div className="login">
-                        <LogInComponent/>
+                    <div className="singUp">
+                        <SingUpComponent/>
                     </div>
                 </div>
             )
     }
 }
 
-export default LogIn
+export default SingUp

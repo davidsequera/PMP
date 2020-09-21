@@ -1,31 +1,9 @@
-.LogInComponent_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.LogInComponent_form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    border: 2px solid var(--color-A4);
-    border-radius: 1rem;
-    margin: 20px;
-}
-.LogInComponent_User-logo{
-    width: 45px;
-    object-fit: cover;
-    color: var(--color-B);
-    margin: 10px;
-    flex-shrink: 0;
-}
-.LogInComponent_item{
+.UserInput_item{
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
 }
-.LogInComponent_item label{
+.UserInput_item label{
     font-size: 2rem;
     font-weight: bold;
     line-height: 1.5;
@@ -36,7 +14,7 @@
     margin-bottom: 0.5rem;
 }
 
-.LogInComponent_item input{
+.UserInput_item input{
     /* -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -54,21 +32,4 @@
     border: 1px solid var(--color-A2);
     border-radius: 3.25rem;
     /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
-}
-#LogInComponent_button{
-    border-radius: 25px;
-    margin: 35px 0 20px 0;
-    width: 60vw;
-    height: 12vh;
-}
-
-
-@media screen and (min-width: 768px){
-    #LogInComponent_button{
-        width: 335px;
-        height: 81px;
-    }
-    .LogInComponent_User-logo{
-        width: 50px;
-    }
 }

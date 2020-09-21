@@ -35,7 +35,7 @@
 --Header-size:57px;
 --Footer-size:45px;
 --HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
-  --Page-padding: 0 20px  var(--Navbar-size) 20px;
+--Page-padding: 0 20px  var(--Navbar-size) 20px;
   }
 body{
   background-color: var(--color-A);
@@ -61,10 +61,11 @@ body{
   /* min-height: calc(100vh - var(--Navbar-size)); */
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
-.Page-title{
+.title{
   font-size: 50px;
-  margin: 20px 0 34px 0;
+  margin: 0.3rem;
 }
 /* General Settings */
 

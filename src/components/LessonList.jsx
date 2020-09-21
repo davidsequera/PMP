@@ -37,7 +37,7 @@ class LessonList extends React.Component{
                                     </div>
                                 </div>
                                 <div 
-                                className={this.state.chapter === chapter.name ? "lesson-container" : " hidden lesson-container"} 
+                                className={this.state.chapter === chapter.name ? "lesson-container" : " hidden"} 
                                 >
                                 {chapter.lessons ? chapter.lessons.map((lesson) =>{
                                     return(
