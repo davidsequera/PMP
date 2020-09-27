@@ -5,8 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
 
+const port = 3030
+
 const client = new ApolloClient({
-  uri: 'http://localhost:3030',
+  uri: `http://192.168.0.7:${port}/api`,
   cache: new InMemoryCache()
 })
 

@@ -3,57 +3,57 @@
   src: url(./assets/fonts/Monoton/Monoton-Regular.ttf);
 }
 
-:root{
+:root {
   /* Color Theme Basic */
---color-A:  #FFFFFF;
---color-B:  #FF7E4F;
---color-C:  #3696FF;
---color-D:  #2E40B3;
-/* Color Theme A */
---color-A1:  #BFBFBF;
---color-A2:  #808080;
---color-A3:  #F0F0F0;
---color-A4:  #404040;
---color-A5:  #E6E6E6;
-/* Color Theme B */
---color-B1:  #BF5E3B;
---color-B2:  #803F28;
---color-B3:  #401F14;
---color-B4:  #E67147;
-/* Color Theme  C*/
---color-C1:  #2871BF;
---color-C2:  #1B4B80;
---color-C3:  #0D2640;
---color-C4:  #3088E6;
-/* Color Theme D */
---color-D1:  #283CBF;
---color-D2:  #1B2880;
---color-D3:  #0D1440;
---color-D4:  #3048E6;
+  --color-A: #ffffff;
+  --color-B: #ff7e4f;
+  --color-C: #3696ff;
+  --color-D: #2e40b3;
+  /* Color Theme A */
+  --color-A1: #bfbfbf;
+  --color-A2: #808080;
+  --color-A3: #f0f0f0;
+  --color-A4: #404040;
+  --color-A5: #e6e6e6;
+  /* Color Theme B */
+  --color-B1: #bf5e3b;
+  --color-B2: #803f28;
+  --color-B3: #401f14;
+  --color-B4: #e67147;
+  /* Color Theme  C*/
+  --color-C1: #2871bf;
+  --color-C2: #1b4b80;
+  --color-C3: #0d2640;
+  --color-C4: #3088e6;
+  /* Color Theme D */
+  --color-D1: #283cbf;
+  --color-D2: #1b2880;
+  --color-D3: #0d1440;
+  --color-D4: #3048e6;
 
+  --Header-size: 57px;
+  --Footer-size: 45px;
+  --HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
+  --Page-padding: 0 20px var(--Navbar-size) 20px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 
---Header-size:57px;
---Footer-size:45px;
---HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
---Page-padding: 0 20px  var(--Navbar-size) 20px;
-  }
-body{
+}
+body {
   background-color: var(--color-A);
   color: var(--color-A4);
 }
 
-
 /* General Settings */
 
-.Layout-container{
+.Layout-container {
   display: block;
   height: 100%;
   width: auto;
 }
-.App-title{
+.App-title {
   font-size: 72px;
 }
-.Page-container{
+.Page-container {
   /* padding: var(--Page-padding); */
   margin: 0;
   width: auto;
@@ -63,35 +63,36 @@ body{
   flex-direction: column;
   justify-content: center;
 }
-.title{
+.title {
   font-size: 50px;
   margin: 0.3rem;
 }
 /* General Settings */
 
-
 /* General Details */
-.hidden{
+.hidden {
   display: none;
 }
-a{
-  /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+a {
   text-decoration: none;
   color: var(--color-A4);
 }
-ul{
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-h2{
+h2 {
   font-size: 1.6rem;
 }
-input, button{
+input,
+button {
   text-decoration: none;
   outline: none;
+  background: none;
+  border: none;
 }
-.button{
+.button {
   cursor: pointer;
   background-color: var(--color-B4);
   color: var(--color-A);
@@ -99,32 +100,36 @@ input, button{
   font-weight: bold;
   border: 5px solid var(--color-B);
 }
-.button:active{
+.button:active {
   background-color: var(--color-B);
 }
 /* General Details */
 
 /* scrollbar style */
 ::-webkit-scrollbar {
-  width: 8px;
-  /* display: none; */
-  }
-  
-  ::-webkit-scrollbar-track {
-  border: 1px solid var(--color-A3);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-  background: var(--color-B4);  
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-B);  
-  }
+  width: 10px;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid var(--color-A4);
+  background-color: var(--color-A4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-B4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-B);
+}
 /* scrollbar style */
 
 @media screen and (min-width: 1024px) {
-  .button{
+  .button {
     font-size: 2.5rem;
+  }
+  ::-webkit-scrollbar {
+    display: initial;
   }
 }

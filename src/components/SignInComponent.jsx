@@ -56,7 +56,7 @@ const SignInComponent = () => {
         >
           SIGN IN
         </button>
-        {data ? <Redirect to="/course"></Redirect> : false}
+        {data ? <Redirect to="/"></Redirect> : false}
         {error? <p>ERROR</p> : false}
       </form>
       <Link className="SignInComponent_SingUp" to="/signup">Registrate</Link>

@@ -6,11 +6,13 @@ import V11 from '../assets/video/11.mp4'
 import {useQuery, gql } from '@apollo/client'
 import { useState } from 'react'
 import Loading from '../microcomponents/Loading'
+import NotFound from '../components/NotFound'
 
 
 const api = gql`
       query Chapters{
         chapters(course_id: "5f5426d165730f810b643129") {
+          _id
           name
             lessons{
             _id
@@ -35,7 +37,7 @@ const Course = () =>{
       }
     if(error){
         return(
-            <h1>Error</h1>
+            <NotFound/>
         )
     }
       return(
