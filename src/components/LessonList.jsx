@@ -1,79 +1,100 @@
-import React from 'react'
-import './styles/LessonList.css'
+import React from "react";
+import { useState } from "react";
+import "./styles/LessonList.css";
 
-class LessonList extends React.Component{
-        constructor(props){
-        super(props)
-        this.state = {
-            user: {
-                data:{
-                    user_lessons: [
-                        {
-                            user: 'id',
-                            lesson: '5f55707f19351c2a05fc135e'
-                        },
-                        '5f55707f19351c2a05fc135e' // hacer un map de solo strings si true en la query
-                    ]
-                }
-            },
-            chapter: undefined
-        }
+const LessonList = (props) => {
+  const [chapterState, setChapter] = useState(undefined)
+  let temporal =  props.viewed
+  let tem = temporal.filter(e => e.viewed !== false)
+  tem = temporal.map(e => e.lesson_id)
+  const [userLesson, setUserLesson] = useState(tem)
+  function toogleViewed(lesson){
+    let copy = userLesson.filter(word => word !== lesson)
+    if(userLesson.includes(lesson)){
+      setUserLesson(copy)
+      props.viewedHandler(lesson, false)
     }
-    render(){
-        return(
-                <ul className="component-container" id="LessonList">
-                    {this.props.chapters.map((chapter) =>{
-                        return(
-                            <li className="chapter" id={chapter.name} key={chapter._id}>
-                                <div className="chapter-container">
-                                    <div
-                                    role="button"
-                                    className="chapter-button"
-                                    onClick={ () => {
-                                        if(this.state.chapter === chapter.name){
-                                            this.setState({chapter : undefined})
-                                        }
-                                        else{
-                                            this.setState({chapter :chapter.name})
-                                        }
-                                        }}
-                                    >
-                                        <h2 className='chapter-text '>{chapter.name}</h2>
-                                        <div className="progress-bar">
-                                                <div className={ chapter.number ? "progress-ball active-ball" : "progress-ball inactive-ball"}>
-                                                    <div className="progress-mini-ball"></div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul 
-                                className={this.state.chapter === chapter.name ? "lesson-container" : " hidden"} 
-                                >
-                                {chapter.lessons ? chapter.lessons.map((lesson) =>{
-                                    return(
-                                        <li className="lesson" id={lesson._id} key={lesson._id}>
-                                            <button 
-                                            onClick={ () =>{
-                                                this.props.videoChanger(lesson.link)
-                                            }}
-                                            className='lesson-link'>
-                                                <h4 className="lesson-text">{lesson.name}</h4>
-                                            </button>
-                                            <div className="progress-bar">
-                                                <div className={this.state.user.data.user_lessons.includes(lesson._id)? "progress-ball active-ball" : "progress-ball inactive-ball"}>
-                                                    <div className="progress-mini-ball"></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    )
-                                }) : console.error(`${chapter.name} Lección no encontrada`)}
-                                </ul>         
-                            </li>
-                        )
-                    })}
-                </ul>
-        )
+    else if(!(userLesson.includes(lesson))){
+      copy.unshift(lesson)
+      setUserLesson(copy)
+      props.viewedHandler(lesson, true)
     }
-}
+    else{
+      console.error('Unable to Commit Lesson Viewed')
+    }
+  }
 
-export default LessonList
+  return (
+    <ul className="component-container" id="LessonList">
+      {props.chapters.map((chapter) => {
+        return (
+          <li className="chapter" id={chapter.name} key={chapter._id}>
+            <div className="chapter-container">
+              <div
+                role="button"
+                className="chapter-button"
+                onClick={() => {
+                  if (chapterState === chapter.name) {
+                    setChapter(undefined);
+                  } else {
+                    setChapter(chapter.name);
+                  }
+                }}
+              >
+                <h2 className="chapter-text ">{chapter.name}</h2>
+                <div className="progress-dot">
+                  <div
+                    className={
+                      chapter.lessons.some(lesson => userLesson.includes(lesson._id))
+                        ? "progress-ball active-ball"
+                        : "progress-ball inactive-ball"
+                    }
+                  >
+                    <div className="progress-mini-ball"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul
+              className={
+                chapterState === chapter.name
+                  ? "lesson-container"
+                  : " hidden"
+              }
+            >
+              {chapter.lessons
+                ? chapter.lessons.map((lesson) => {
+                    return (
+                      <li className="lesson" id={lesson._id} key={lesson._id}>
+                        <button
+                          onClick={() => {
+                            props.videoChanger(lesson.link);
+                          }}
+                          className="lesson-link"
+                        >
+                          <h4 className="lesson-text">{lesson.name}</h4>
+                        </button>
+                        <div className="progress-dot">
+                          <button onClick={() => toogleViewed(lesson._id)}
+                            className={
+                              userLesson.includes(lesson._id)
+                                ? "progress-ball active-ball"
+                                : "progress-ball inactive-ball"
+                            }
+                          >
+                            <div className="progress-mini-ball"></div>
+                          </button>
+                        </div>
+                      </li>
+                    );
+                  })
+                : console.error(`${chapter.name} Lección no encontrada`)}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+export default LessonList;

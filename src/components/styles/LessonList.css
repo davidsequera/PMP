@@ -31,6 +31,7 @@
     color: var(--color-B);
 }
 .lesson-link{
+    cursor: pointer;
     border: none;
     background-color: transparent;
     color: var(--color-A4);
@@ -38,8 +39,8 @@
 .lesson-link, .chapter-text{
     width: 80%;
 }
-/* progress-bar */
-.progress-bar{
+/* progress-dot */
+.progress-dot{
     flex-shrink: 0;
     width: 20%;
     display: flex;
@@ -54,11 +55,16 @@
     width: 0.75rem;
     height: 0.75rem;
 }
+
 .progress-ball{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+button.progress-ball{
+    cursor: pointer;
+    padding: 0;
 }
 .inactive-ball{
     background-color: var(--color-A2);
