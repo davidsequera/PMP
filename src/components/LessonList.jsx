@@ -4,10 +4,14 @@ import "./styles/LessonList.css";
 
 const LessonList = (props) => {
   const [chapterState, setChapter] = useState(undefined)
-  let temporal =  props.viewed
-  let tem = temporal.filter(e => e.viewed !== false)
-  tem = temporal.map(e => e.lesson_id)
-  const [userLesson, setUserLesson] = useState(tem)
+  const [userLesson, setUserLesson] = useState(tem(props))
+
+  function tem({viewed}){
+    let tem =  viewed
+    tem = tem.filter(e => e.viewed !== false)
+    tem = tem.map(e => e.lesson_id)
+    return tem
+  }
   function toogleViewed(lesson){
     let copy = userLesson.filter(word => word !== lesson)
     if(userLesson.includes(lesson)){
@@ -45,7 +49,7 @@ const LessonList = (props) => {
                 <div className="progress-dot">
                   <div
                     className={
-                      chapter.lessons.some(lesson => userLesson.includes(lesson._id))
+                      chapter.lessons.some(lesson => userLesson.includes(lesson._id) )
                         ? "progress-ball active-ball"
                         : "progress-ball inactive-ball"
                     }

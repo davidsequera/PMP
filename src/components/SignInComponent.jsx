@@ -1,48 +1,61 @@
-import React from "react";
+import React,{ useContext } from "react";
 import "./styles/SignInComponent.css";
 import logo from "../assets/logo/round_logo.png";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import UserInput from "../microcomponents/UserInput";
 import UseInputValue from "../microcomponents/UseInputValue";
-import { gql, useLazyQuery } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
+import  UserContextProvider from "../layout/context/UserContext";
 
 const SIGNIN = gql`
-  query logIn($type: signInInput) {
+  mutation logIn($type: signInInput) {
     signIn(input: $type) {
+      auth
       body
     }
   }
 `;
 
-const SignInComponent = () => {
+const SignInComponent = (props) => {
   // const email = UseInputValue("");
   // const password = UseInputValue("");
   
   const email = UseInputValue("daniel@gmail.com");
   const password = UseInputValue("isavelez");
+  
+  const [signIn, { data, error}] = useMutation(SIGNIN);
+  const {setJWT} = useContext(UserContextProvider);
 
-  const [signIn, { data, error}] = useLazyQuery(SIGNIN);
 
   function validateForm() {
     return email.value.length > 0 && password.value.length > 0;
   }
+  let history = useHistory()
 
   const handleSubmit = async (e) => {
     const userInfo = { email: email.value, password: password.value };
     e.preventDefault();
     try {
       signIn({ variables: { type: userInfo } });
-      console.log(data.signIn.body);
     } catch (e) {
       console.log('Not match');
     }
   };
+  if(data){
+    if(data.signIn.auth){
+      let token = data.signIn.body
+      history.push('/')
+      document.cookie= `id=${token}`
+      localStorage.removeItem('token')
+      localStorage.setItem('token', token )
+      setJWT(localStorage.getItem('token'))
+    }
+  }
   return (
     <div className="SignInComponent_container" id="Form">
       <form
         className="SignInComponent_form"
         onSubmit={handleSubmit}
-        action="/course"
       >
         <img alt="logo PMP" src={logo} className="SignInComponent_User-logo" />
         <UserInput id="2" title="Email" type="email" name={email} />
@@ -56,8 +69,7 @@ const SignInComponent = () => {
         >
           SIGN IN
         </button>
-        {data ? <Redirect to="/"></Redirect> : false}
-        {error? <p>ERROR</p> : false}
+        {error && <p>ERROR</p>}
       </form>
       <Link className="SignInComponent_SingUp" to="/signup">Registrate</Link>
     </div>
@@ -65,3 +77,4 @@ const SignInComponent = () => {
 };
 
 export default SignInComponent;
+

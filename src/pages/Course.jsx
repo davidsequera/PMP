@@ -4,7 +4,7 @@ import Video from "../components/Video";
 import "./styles/Course.css";
 import V11 from "../assets/video/11.mp4";
 import { useQuery, gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useState} from "react";
 import Loading from "../microcomponents/Loading";
 import NotFound from "../components/NotFound";
 
@@ -24,7 +24,7 @@ const CHAPTERS = gql`
 
 const LESSONLIST = gql`
 query users{
-  user(_id: "5f720a8e4823f406ec30b96e"){
+  user{
     _id
     name
     lessons{
@@ -54,7 +54,7 @@ const Course = () => {
   const [updateViewed] = useMutation(LESSONVIEWED) 
 
   function viewedHandler(lesson, state){
-    let userInfo = {user_id: "5f720a8e4823f406ec30b96e",lesson_id: lesson, viewed: state}
+    let userInfo = {user_id: viewed.data.user._id,lesson_id: lesson, viewed: state}
     updateViewed({variables: {type: userInfo}})
   }
 
