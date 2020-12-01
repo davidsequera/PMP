@@ -12,7 +12,7 @@ const port = 3030
 
 
 const httpLink = createHttpLink({
-  uri: `http://192.168.0.8:${port}/api`,
+  uri: `http://192.168.0.6:${port}/api`,
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -28,7 +28,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  uri: `http://192.168.0.8:${port}/api`,
+  uri: `http://192.168.0.6:${port}/api`,
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink)
   // credentials: 'include'

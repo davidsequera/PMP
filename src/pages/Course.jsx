@@ -7,10 +7,11 @@ import { useQuery, gql, useMutation } from "@apollo/client";
 import { useState} from "react";
 import Loading from "../microcomponents/Loading";
 import NotFound from "../components/NotFound";
+import { useEffect } from "react";
 
 const CHAPTERS = gql`
-  query Chapters {
-    chapters(course_id: "5f5426d165730f810b643129") {
+  query Chapters($chapterId: ID!) {
+    chapters(course_id: $chapterId) {
       _id
       name
       lessons {
@@ -49,18 +50,22 @@ const LESSONVIEWED = gql`
 //capitulo 5 leccion 4,5
 const Course = () => {
   const [video, setVideo] = useState(V11);
-  const { loading, error, data } = useQuery(CHAPTERS);
-  const viewed = useQuery(LESSONLIST);
+  const { client, loading, error, data } = useQuery(CHAPTERS, {variables: {chapterId: "5f5426d165730f810b643129"}});
+  const viewed = useQuery(LESSONLIST, {pollInterval: 500});
   const [updateViewed] = useMutation(LESSONVIEWED) 
 
   function viewedHandler(lesson, state){
     let userInfo = {user_id: viewed.data.user._id,lesson_id: lesson, viewed: state}
     updateViewed({variables: {type: userInfo}})
   }
-
   function videoChanger(link) {
     setVideo(link);
   }
+  useEffect(() =>{
+    return ()=>{
+      client.stop()
+    }
+  }, )
   if (loading || viewed.loading) {
     return <Loading />;
   }

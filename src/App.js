@@ -11,12 +11,14 @@ import UserContextPovider from './layout/context/UserContext'
 
 function App() {
   const {jwt} = useContext(UserContextPovider)
+  console.log(jwt)
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
             <Route exact path="/">
               {jwt? <Course/> : <Redirect to="/signin"/>}
+
             </Route>
             <Route exact path="/signin">
                 {/* {!jwt? <SignIn/> : <Redirect to="/"/>}              */}

@@ -20,10 +20,10 @@ const SignInComponent = (props) => {
   // const email = UseInputValue("");
   // const password = UseInputValue("");
   
-  const email = UseInputValue("daniel@gmail.com");
-  const password = UseInputValue("isavelez");
+  const email = UseInputValue("david@gmail.com");
+  const password = UseInputValue("root");
   
-  const [signIn, { data, error}] = useMutation(SIGNIN);
+  const [signIn, { client,data, error}] = useMutation(SIGNIN);
   const {setJWT} = useContext(UserContextProvider);
 
 
@@ -43,12 +43,14 @@ const SignInComponent = (props) => {
   };
   if(data){
     if(data.signIn.auth){
+      client.resetStore()
       let token = data.signIn.body
-      history.push('/')
-      document.cookie= `id=${token}`
+      console.log('[SignIn]', token)
+      // document.cookie= `id=${token}`
       localStorage.removeItem('token')
       localStorage.setItem('token', token )
       setJWT(localStorage.getItem('token'))
+      history.push('/')
     }
   }
   return (

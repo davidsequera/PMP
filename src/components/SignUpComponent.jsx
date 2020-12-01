@@ -27,8 +27,6 @@ const SignUpComponent = () =>{
 
 
 
-    // const[hi, setHi] = useState(false)
-
     function handleSubmit(e){
         let userInfo = { name:name.value, email: email.value, password: password.value }
         e.preventDefault()

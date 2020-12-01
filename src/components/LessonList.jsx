@@ -5,7 +5,6 @@ import "./styles/LessonList.css";
 const LessonList = (props) => {
   const [chapterState, setChapter] = useState(undefined)
   const [userLesson, setUserLesson] = useState(tem(props))
-
   function tem({viewed}){
     let tem =  viewed
     tem = tem.filter(e => e.viewed !== false)
