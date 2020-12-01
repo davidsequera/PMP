@@ -51,7 +51,7 @@ const LESSONVIEWED = gql`
 const Course = () => {
   const [video, setVideo] = useState(V11);
   const { client, loading, error, data } = useQuery(CHAPTERS, {variables: {chapterId: "5f5426d165730f810b643129"}});
-  const viewed = useQuery(LESSONLIST, {pollInterval: 500});
+  const viewed = useQuery(LESSONLIST);
   const [updateViewed] = useMutation(LESSONVIEWED) 
 
   function viewedHandler(lesson, state){
