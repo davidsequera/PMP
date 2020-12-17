@@ -31,7 +31,7 @@ const LessonList = (props) => {
     <ul className="component-container" id="LessonList">
       {props.chapters.map((chapter) => {
         return (
-          <li className="chapter" id={chapter.name} key={chapter._id}>
+          <li className="chapter" id={chapter.name} key={chapter.id}>
             <div className="chapter-container">
               <div
                 role="button"
@@ -48,7 +48,7 @@ const LessonList = (props) => {
                 <div className="progress-dot">
                   <div
                     className={
-                      chapter.lessons.some(lesson => userLesson.includes(lesson._id) )
+                      chapter.lessons.some(lesson => userLesson.includes(lesson.id) )
                         ? "progress-ball active-ball"
                         : "progress-ball inactive-ball"
                     }
@@ -68,7 +68,7 @@ const LessonList = (props) => {
               {chapter.lessons
                 ? chapter.lessons.map((lesson) => {
                     return (
-                      <li className="lesson" id={lesson._id} key={lesson._id}>
+                      <li className="lesson" id={lesson.id} key={lesson.id}>
                         <button
                           onClick={() => {
                             props.videoChanger(lesson.link);
@@ -78,9 +78,9 @@ const LessonList = (props) => {
                           <h4 className="lesson-text">{lesson.name}</h4>
                         </button>
                         <div className="progress-dot">
-                          <button onClick={() => toogleViewed(lesson._id)}
+                          <button onClick={() => toogleViewed(lesson.id)}
                             className={
-                              userLesson.includes(lesson._id)
+                              userLesson.includes(lesson.id)
                                 ? "progress-ball active-ball"
                                 : "progress-ball inactive-ball"
                             }

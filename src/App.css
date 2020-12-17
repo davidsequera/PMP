@@ -43,6 +43,16 @@ body {
   color: var(--color-A4);
 }
 
+
+::selection{
+  background-color: var(--color-A2); /* WebKit/Blink Browsers */
+  color: var(--color-A3);
+}
+::-moz-selection{
+  background-color: var(--color-A2); /* WebKit/Blink Browsers */
+  color: var(--color-A3);
+}
+
 /* General Settings */
 
 .Layout-container {
@@ -96,7 +106,7 @@ button {
   cursor: pointer;
   background-color: var(--color-B4);
   color: var(--color-A);
-  font-size: 2.5rem;
+  font-size: 2em;
   font-weight: bold;
   border: 5px solid var(--color-B);
 }

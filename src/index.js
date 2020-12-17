@@ -6,13 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apollo/client'
 import { setContext } from '@apollo/client/link/context';
 import { UserContextProvider } from './layout/context/UserContext'
-
+import { onError } from "@apollo/client/link/error";
 
 const port = 3030
 
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
 
-const httpLink = createHttpLink({
-  uri: `http://192.168.0.6:${port}/api`,
+  if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -27,10 +33,15 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
+const httpLink = createHttpLink({
+  // uri: `http://192.168.0.6:${port}/api`,
+  uri: `https://graph-pmp.vercel.app/api`,
+  // uri: '/api'
+});
+
 const client = new ApolloClient({
-  uri: `http://192.168.0.6:${port}/api`,
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink)
+  link: authLink.concat(errorLink).concat(httpLink)
   // credentials: 'include'
 })
 

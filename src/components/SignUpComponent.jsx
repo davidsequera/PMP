@@ -1,39 +1,70 @@
 import React from 'react'
 import './styles/SignUpComponent.css'
+import { useHistory } from "react-router-dom";
 import useInputValue from '../microcomponents/UseInputValue'
 import UserInput from '../microcomponents/UserInput';
 // import { useState } from 'react';
+import  UserContextProvider from "../layout/context/UserContext";
+import { useContext } from "react";
 import { gql, useMutation } from '@apollo/client';
 
 
 const SIGNUP = gql`
   mutation signUp($type: signUpInput) {
     signUp(input: $type) {
-      _id
+      id
       name
       email
       password
     }
   }
 `;
-
+const SIGNIN = gql`
+  mutation logIn($type: signInInput) {
+    signIn(input: $type) {
+      auth
+      body
+    }
+  }
+`;
 
 
 const SignUpComponent = () =>{
     const [signUp] = useMutation(SIGNUP);
-    const name = useInputValue('dani')
-    const email = useInputValue('dani@gmail.com')
-    const password = useInputValue('12345')
+    const [signIn, { client,data, error}] = useMutation(SIGNIN);
+    const {setJWT} = useContext(UserContextProvider);
+
+    const name = useInputValue('')
+    const email = useInputValue('')
+    const password = useInputValue('')
+
+    let history = useHistory()
 
 
-
-    function handleSubmit(e){
+    async function handleSubmit(e){
         let userInfo = { name:name.value, email: email.value, password: password.value }
+        let logInInfo = {email: email.value, password: password.value }
         e.preventDefault()
         console.log(userInfo)
-        signUp({variables: {type: userInfo}})
-        // setHi(true)
-    }
+        try {
+          await signUp({variables: {type: userInfo}})
+          await signIn({ variables: { type: logInInfo } });
+        } catch (e) {
+          console.log('Not match');
+        }
+      }
+
+      if(data){
+        if(data.signIn.auth){
+          client.resetStore()
+          let token = data.signIn.body
+          // document.cookie= `id=${token}`
+          localStorage.removeItem('token')
+          localStorage.setItem('token', token )
+          setJWT(localStorage.getItem('token'))
+          history.push('/')
+        }
+      }
 
     return(
         <div className="SignUpComponent_container" id="Form">
@@ -55,12 +86,13 @@ const SignUpComponent = () =>{
             />
             <UserInput
                 id="2"
-                title="password"
+                title="Password"
                 type="password"
                 name={password}
             />
             <button 
             className="button" id="SignUpComponent_button">Sign Up</button>
+            {error && <p>ERROR</p>}
             </form>
 
         {/* {hi ? <h1>Succes</h1> : false} */}

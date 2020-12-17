@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext, useEffect} from "react";
 import LessonList from "../components/LessonList";
 import Video from "../components/Video";
 import "./styles/Course.css";
@@ -7,15 +7,17 @@ import { useQuery, gql, useMutation } from "@apollo/client";
 import { useState} from "react";
 import Loading from "../microcomponents/Loading";
 import NotFound from "../components/NotFound";
-import { useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import  UserContextProvider from "../layout/context/UserContext";
+
 
 const CHAPTERS = gql`
   query Chapters($chapterId: ID!) {
     chapters(course_id: $chapterId) {
-      _id
+      id
       name
       lessons {
-        _id
+        id
         name
         link
       }
@@ -26,10 +28,10 @@ const CHAPTERS = gql`
 const LESSONLIST = gql`
 query users{
   user{
-    _id
+    id
     name
     lessons{
-      _id
+      id
       user_id
       lesson_id
       viewed
@@ -40,7 +42,7 @@ query users{
 const LESSONVIEWED = gql`
   mutation createViewed($type: lessonViewedInput) {
     lessonViewed(input: $type) {
-      _id
+      id
       user_id
       lesson_id
       viewed
@@ -50,12 +52,15 @@ const LESSONVIEWED = gql`
 //capitulo 5 leccion 4,5
 const Course = () => {
   const [video, setVideo] = useState(V11);
-  const { client, loading, error, data } = useQuery(CHAPTERS, {variables: {chapterId: "5f5426d165730f810b643129"}});
-  const viewed = useQuery(LESSONLIST, {pollInterval: 500});
-  const [updateViewed] = useMutation(LESSONVIEWED) 
+  const { client, loading, error, data } = useQuery(CHAPTERS, {variables: {chapterId: "1"}});
+  const viewed = useQuery(LESSONLIST);
+  const [updateViewed] = useMutation(LESSONVIEWED)
+  const {setJWT} = useContext(UserContextProvider);
+  
+
 
   function viewedHandler(lesson, state){
-    let userInfo = {user_id: viewed.data.user._id,lesson_id: lesson, viewed: state}
+    let userInfo = {user_id: viewed.data.user.id,lesson_id: lesson, viewed: state}
     updateViewed({variables: {type: userInfo}})
   }
   function videoChanger(link) {
@@ -69,7 +74,15 @@ const Course = () => {
   if (loading || viewed.loading) {
     return <Loading />;
   }
+  if(viewed.error) {        
+    client.stop()
+    client.resetStore()
+    localStorage.removeItem("token")
+    setJWT()
+    return <Redirect to="/signin" />
+  }
   if (error) {
+
     return <NotFound />;
   }
   return (

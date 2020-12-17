@@ -11,7 +11,6 @@ import UserContextPovider from './layout/context/UserContext'
 
 function App() {
   const {jwt} = useContext(UserContextPovider)
-  console.log(jwt)
   return (
     <BrowserRouter>
       <Layout>

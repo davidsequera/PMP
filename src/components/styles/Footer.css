@@ -5,8 +5,8 @@
 	display: flex;
 	border-top: 1px solid var(--color-A4);
 	justify-content: center;
-	background-color:var(--color-A);
-	color: var(--color-A4);
+	background-color:var(--color-D3);
+	color: var(--color-A);
 }
 .footer-container{
 	max-width: inherit;
@@ -16,6 +16,7 @@
 	justify-content: space-between;
 }
 .footer-text{
+	font-weight: 600;
 	margin: 10px 20px;
 }
 

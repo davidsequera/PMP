@@ -20,8 +20,8 @@ const SignInComponent = (props) => {
   // const email = UseInputValue("");
   // const password = UseInputValue("");
   
-  const email = UseInputValue("david@gmail.com");
-  const password = UseInputValue("root");
+  const email = UseInputValue("");
+  const password = UseInputValue("");
   
   const [signIn, { client,data, error}] = useMutation(SIGNIN);
   const {setJWT} = useContext(UserContextProvider);
@@ -38,14 +38,13 @@ const SignInComponent = (props) => {
     try {
       signIn({ variables: { type: userInfo } });
     } catch (e) {
-      console.log('Not match');
+      console.log('Not match', e);
     }
   };
   if(data){
     if(data.signIn.auth){
       client.resetStore()
       let token = data.signIn.body
-      console.log('[SignIn]', token)
       // document.cookie= `id=${token}`
       localStorage.removeItem('token')
       localStorage.setItem('token', token )
