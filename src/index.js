@@ -7,8 +7,9 @@ import {ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from '@apol
 import { setContext } from '@apollo/client/link/context';
 import { UserContextProvider } from './layout/context/UserContext'
 import { onError } from "@apollo/client/link/error";
+import Cookies from "universal-cookie/es6";
 
-const port = 3030
+const cookies = new Cookies();
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -23,7 +24,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('token');
+  const token = cookies.get('token');
   // return the headers to the context so httpLink can read them
   return {
     headers: {
@@ -34,14 +35,15 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const httpLink = createHttpLink({
-  // uri: `http://192.168.0.6:${port}/api`,
+  // uri: `http://192.168.0.10:3030/api`,
+  // uri: `http://localhost:3030/api`,
   uri: `https://graph-pmp.vercel.app/api`,
   // uri: '/api'
 });
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(errorLink).concat(httpLink)
+  link: authLink.concat(errorLink).concat(httpLink),
   // credentials: 'include'
 })
 

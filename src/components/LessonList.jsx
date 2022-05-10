@@ -4,6 +4,7 @@ import "./styles/LessonList.css";
 
 const LessonList = (props) => {
   const [chapterState, setChapter] = useState(undefined)
+  const [lessonActive, setLesson] = useState(undefined)
   const [userLesson, setUserLesson] = useState(tem(props))
   function tem({viewed}){
     let tem =  viewed
@@ -44,7 +45,7 @@ const LessonList = (props) => {
                   }
                 }}
               >
-                <h2 className="chapter-text ">{chapter.name}</h2>
+                <h2 className={chapter.lessons.some(lesson => lesson.id === lessonActive)? "chapter-text chapter-active": "chapter-text"}>{chapter.name}</h2>
                 <div className="progress-dot">
                   <div
                     className={
@@ -71,11 +72,12 @@ const LessonList = (props) => {
                       <li className="lesson" id={lesson.id} key={lesson.id}>
                         <button
                           onClick={() => {
+                            setLesson(lesson.id);
                             props.videoChanger(lesson.link);
                           }}
                           className="lesson-link"
                         >
-                          <h4 className="lesson-text">{lesson.name}</h4>
+                          <h4 className={lessonActive === lesson.id? "lesson-text lesson-active": "lesson-text"}>{lesson.name}</h4>
                         </button>
                         <div className="progress-dot">
                           <button onClick={() => toogleViewed(lesson.id)}

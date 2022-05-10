@@ -4,14 +4,14 @@ import "./styles/Video.css";
 
 const Video = (props) => {
   return (
-    <div className="Video" id="Video">
+    <div className="Video">
       <div className="video-container">
         <div className="course-video">
           <video
             className="theVideo"
             controls
             controlsList="nodownload"
-            src={props.video}
+            src={`http://192.168.0.10:3030/video/${props.video}`}
           ></video>
         </div>
       </div>

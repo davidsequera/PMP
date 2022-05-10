@@ -6,6 +6,8 @@ import UserInput from "../microcomponents/UserInput";
 import UseInputValue from "../microcomponents/UseInputValue";
 import { gql, useMutation } from "@apollo/client";
 import  UserContextProvider from "../layout/context/UserContext";
+import Cookies from "universal-cookie/es6";
+import ErrorBanner from "../microcomponents/ErrorBanner";
 
 const SIGNIN = gql`
   mutation logIn($type: signInInput) {
@@ -22,15 +24,15 @@ const SignInComponent = (props) => {
   
   const email = UseInputValue("");
   const password = UseInputValue("");
-  
+  const cookies = new Cookies()
   const [signIn, { client,data, error}] = useMutation(SIGNIN);
   const {setJWT} = useContext(UserContextProvider);
-
+  let history = useHistory()
 
   function validateForm() {
     return email.value.length > 0 && password.value.length > 0;
   }
-  let history = useHistory()
+
 
   const handleSubmit = async (e) => {
     const userInfo = { email: email.value, password: password.value };
@@ -41,16 +43,22 @@ const SignInComponent = (props) => {
       console.log('Not match', e);
     }
   };
+
   if(data){
     if(data.signIn.auth){
       client.resetStore()
       let token = data.signIn.body
       // document.cookie= `id=${token}`
-      localStorage.removeItem('token')
-      localStorage.setItem('token', token )
-      setJWT(localStorage.getItem('token'))
-      history.push('/')
+      cookies.remove('token')
+      cookies.set('token', token)
+      setJWT(cookies.get('token'))
+      history.push('/dashboard')
+    }else{
+      // error de usuario
     }
+  }
+  if (error){
+    console.log(error)
   }
   return (
     <div className="SignInComponent_container" id="Form">
@@ -60,7 +68,7 @@ const SignInComponent = (props) => {
       >
         <img alt="logo PMP" src={logo} className="SignInComponent_User-logo" />
         <UserInput id="2" title="Email" type="email" name={email} />
-        <UserInput id="34" title="Password" type="password" name={password} />
+        <UserInput id="34" title="Contraseña" type="password" name={password} />
         <button
           disabled={!validateForm()}
           // onClick={this.props.consoleprinter}
@@ -70,7 +78,7 @@ const SignInComponent = (props) => {
         >
           SIGN IN
         </button>
-        {error && <p>ERROR</p>}
+        {error && <ErrorBanner/>}
       </form>
       <Link className="SignInComponent_SingUp" to="/signup">Registrate</Link>
     </div>

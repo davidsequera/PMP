@@ -1,0 +1,50 @@
+#Chapters{
+    display: flex;
+    align-items: center;
+    justify-content: initial;
+    flex-direction: column;
+    height: 100%;
+}
+
+#Chapters .theVideo{
+    width: 100vw;
+
+}
+
+.Chapters-logo{
+    background: linear-gradient(-45deg, var(--color-D4), var(--color-D2),var(--color-C4), var(--color-C));
+    padding: 1rem;
+    margin: 10vw;
+    border-radius: 100% ;
+    width: 50vw;
+    background-size: 400% 400%;
+    animation: 6000ms gradient ease infinite;
+}
+@media screen and (min-width: 768px){
+    #Chapters{
+        justify-content: center;
+    }
+    #Chapters .Video{
+        margin: 0;
+    }
+    .Chapters-logo{
+        margin: 2rem 10vw;
+        width: 17rem;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    #Chapters{
+        flex-direction: row-reverse;
+    }
+    #Chapters .Video{
+        /* width: 70%; */
+        margin: 1vw;
+    } 
+    #Chapters .theVideo{
+        width: 50vw;
+    } 
+    .Chapters-logo{
+        margin: 2rem 15vw;
+    }
+}

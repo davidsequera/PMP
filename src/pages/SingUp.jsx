@@ -5,9 +5,7 @@ class SingUp extends React.Component{
     render(){
         return(
                 <div className="Page-container" id="SingUp">
-                    <div className="singUp">
                         <SingUpComponent/>
-                    </div>
                 </div>
             )
     }

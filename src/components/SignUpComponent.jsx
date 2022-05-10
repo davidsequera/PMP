@@ -7,6 +7,7 @@ import UserInput from '../microcomponents/UserInput';
 import  UserContextProvider from "../layout/context/UserContext";
 import { useContext } from "react";
 import { gql, useMutation } from '@apollo/client';
+import Cookies from 'universal-cookie/es6';
 
 
 const SIGNUP = gql`
@@ -40,6 +41,8 @@ const SignUpComponent = () =>{
 
     let history = useHistory()
 
+    const cookies = new Cookies()
+
 
     async function handleSubmit(e){
         let userInfo = { name:name.value, email: email.value, password: password.value }
@@ -59,9 +62,9 @@ const SignUpComponent = () =>{
           client.resetStore()
           let token = data.signIn.body
           // document.cookie= `id=${token}`
-          localStorage.removeItem('token')
-          localStorage.setItem('token', token )
-          setJWT(localStorage.getItem('token'))
+          cookies.remove('token')
+          cookies.set('token', token)
+          setJWT(cookies.get('token'))
           history.push('/')
         }
       }
@@ -78,7 +81,7 @@ const SignUpComponent = () =>{
 
             />
             <UserInput
-                id="2"
+                id="3"
                 title="Email"
                 type="email"
                 name={email}

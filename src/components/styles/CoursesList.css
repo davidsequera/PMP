@@ -1,0 +1,13 @@
+.CoursesList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px){
+    .CoursesList{
+        margin: auto;
+        padding: auto;
+    }
+}

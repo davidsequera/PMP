@@ -1,8 +1,3 @@
-@font-face {
-  font-family: Monoton;
-  src: url(./assets/fonts/Monoton/Monoton-Regular.ttf);
-}
-
 :root {
   /* Color Theme Basic */
   --color-A: #ffffff;
@@ -10,11 +5,11 @@
   --color-C: #3696ff;
   --color-D: #2e40b3;
   /* Color Theme A */
-  --color-A1: #bfbfbf;
-  --color-A2: #808080;
-  --color-A3: #f0f0f0;
-  --color-A4: #404040;
-  --color-A5: #e6e6e6;
+  --color-A1: #BABABA;
+  --color-A2: #7A7A7A;
+  --color-A3: #FAFAFA;
+  --color-A4: #3B3B3B;
+  --color-A5: #E0E0E0;
   /* Color Theme B */
   --color-B1: #bf5e3b;
   --color-B2: #803f28;
@@ -24,12 +19,16 @@
   --color-C1: #2871bf;
   --color-C2: #1b4b80;
   --color-C3: #0d2640;
+  --raw-C3: 13, 38, 64;
   --color-C4: #3088e6;
   /* Color Theme D */
   --color-D1: #283cbf;
   --color-D2: #1b2880;
   --color-D3: #0d1440;
   --color-D4: #3048e6;
+
+  --color-ErrorBack:pink;
+  --color-Error: red;
 
   --Header-size: 57px;
   --Footer-size: 45px;
@@ -68,7 +67,7 @@ body {
   margin: 0;
   width: auto;
   min-height: calc(100vh - var(--HeaderFooter));
-  /* min-height: calc(100vh - var(--Navbar-size)); */
+  background-color: var(--color-A3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,6 +82,7 @@ body {
 .hidden {
   display: none;
 }
+
 a {
   text-decoration: none;
   color: var(--color-A4);
@@ -117,12 +117,12 @@ button {
 
 /* scrollbar style */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
   display: none;
 }
 
 ::-webkit-scrollbar-track {
-  border: 1px solid var(--color-A4);
+  /* border: 1px solid var(--color-A4); */
   background-color: var(--color-A4);
 }
 
@@ -135,9 +135,38 @@ button {
 }
 /* scrollbar style */
 
+
+/* animations */
+@keyframes shrinking {
+  0% {
+    opacity: 1;
+  }
+  99%{
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+    visibility: none;
+  }
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+/* animations */
+
+
 @media screen and (min-width: 1024px) {
   .button {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   ::-webkit-scrollbar {
     display: initial;

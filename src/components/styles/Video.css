@@ -1,5 +1,5 @@
-#Video{
-    width: 100%;
+.Video{
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,12 +13,22 @@
     display: flex;
     position: relative;
 }
-.theVideo{
-    width: 100vw;
 
+.theVideo{
+    width: 95vw;
 }
-@media screen and (min-width: 1024px){
+
+@media screen and (min-width: 768px){
+    .Video{
+        margin: 1vw;
+    }
     .theVideo{
-        width: 700px;
-    } 
+        width: 70vw;
+    }
+}
+
+@media screen and (min-width:  1024px){
+    .theVideo{
+        width: 60vw;
+    }
 }

@@ -1,0 +1,34 @@
+.UserCourse{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 21rem;
+    height:8rem;
+    margin: 0.6rem;
+    padding: 0.6rem;
+    border-radius: 2rem ;
+    font-size: 1.6rem;
+    text-align: center;
+    font-family: Raleway, Helvetica, sans-serif;
+    background-color: var(--color-A);
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+}
+.UserCourse-tite{
+    margin: 4%;
+}
+.UserCourse-bar{
+    --bar-radius: 2rem;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.UserCourse-bar::-webkit-progress-bar {
+    background-color: var(--color-A3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    border-radius: var(--bar-radius);
+}
+.UserCourse-bar::-webkit-progress-value {
+    background-color: var(--color-C2);
+    border-radius: var(--bar-radius);
+}

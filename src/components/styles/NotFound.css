@@ -1,7 +1,7 @@
 #NotFound{
     justify-content: center;
     color: var(--color-A);
-    background-color: var(--color-A4);
+    background-color: var(--color-C3);
 }
 
 .NotFound-main{
@@ -9,4 +9,5 @@
     justify-content: center; 
     align-items:center;
     text-Align:center;
+    font-family: 'Merriweather Sans', Courier, monospace;
 }

@@ -1,0 +1,16 @@
+#Courses{
+    height: 100%;
+    justify-content: initial;
+}
+.Courses-title{
+    font-size: 2.5rem;
+    font-family: 'KoHo', Helvetica, sans-serif;
+    color: var(--color-D3);
+    text-align: center;
+    margin: 1rem 3rem;
+}
+@media screen and (min-width: 768px){
+    .Courses-title{
+        text-align: start;
+    }
+}
