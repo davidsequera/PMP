@@ -25,9 +25,10 @@ const SignInComponent = (props) => {
   const email = UseInputValue("");
   const password = UseInputValue("");
   const cookies = new Cookies()
-  const [signIn, { client,data, error}] = useMutation(SIGNIN);
+  const [signIn, { client,data, error}] = useMutation(SIGNIN, { errorPolicy: "none" });
   const {setJWT} = useContext(UserContextProvider);
   let history = useHistory()
+
 
   function validateForm() {
     return email.value.length > 0 && password.value.length > 0;
@@ -38,9 +39,9 @@ const SignInComponent = (props) => {
     const userInfo = { email: email.value, password: password.value };
     e.preventDefault();
     try {
-      signIn({ variables: { type: userInfo } });
-    } catch (e) {
-      console.log('Not match', e);
+      await signIn({ variables: { type: userInfo } });
+    } catch (err) {
+      console.log('Not match', err);
     }
   };
 
@@ -56,9 +57,6 @@ const SignInComponent = (props) => {
     }else{
       // error de usuario
     }
-  }
-  if (error){
-    console.log(error)
   }
   return (
     <div className="SignInComponent_container" id="Form">

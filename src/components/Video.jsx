@@ -11,7 +11,7 @@ const Video = (props) => {
             className="theVideo"
             controls
             controlsList="nodownload"
-            src={`http://192.168.0.10:3030/video/${props.video}`}
+            src={`http://192.168.0.8:3030/video/${props.video}`}
           ></video>
         </div>
       </div>

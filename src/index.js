@@ -36,8 +36,8 @@ const authLink = setContext((_, { headers }) => {
 
 const httpLink = createHttpLink({
   // uri: `http://192.168.0.10:3030/api`,
-  // uri: `http://localhost:3030/api`,
-  uri: `https://graph-pmp.vercel.app/api`,
+  uri: `http://localhost:3030/api`,
+  // uri: `https://graph-pmp.vercel.app/api`,
   // uri: '/api'
 });
 
